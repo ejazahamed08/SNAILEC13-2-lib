@@ -19,5 +19,16 @@ t.pendown()    # Put the pen back down to draw again
 # The number inside the parentheses is the radius (50 pixels)
 t.circle(50)
 
+from PIL import Image
+
+# 1. Grab the Tkinter canvas from turtle and save it as an EPS file
+canvas = turtle.getcanvas()
+canvas.postscript(file="drawing.eps")
+
+# 2. Open the EPS with Pillow and convert it to a PNG
+img = Image.open("drawing.eps")
+img.save("drawing.png")
+print("Drawing saved as drawing.png!")
+
 # Keep the window open until you click it away
 turtle.done()
